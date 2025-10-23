@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Al-Hikmah - Website Resmi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .prayer-time-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .prayer-time-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .qibla-needle {
+            transition: transform 0.5s ease;
+        }
+        
+        .announcement-slide {
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body class="scroll-smooth">
+    <!-- Announcement Bar -->
+    <div class="bg-green-600 text-white py-2 overflow-hidden relative">
+        <div class="announcement-slide whitespace-nowrap">
+            <span class="mx-8">📢 Sholat Jum'at pukul 12:30 WIB</span>
+            <span class="mx-8">📢 Kajian Rutin setiap malam Jum'at ba'da Isya</span>
+            <span class="mx-8">📢 Program Santunan Anak Yatim tanggal 25 setiap bulan</span>
+            <span class="mx-8">📢 TPA Masjid Al-Hikmah dibuka setiap hari Ahad</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <i class="fas fa-mosque text-3xl text-purple-600 mr-3"></i>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">Masjid Al-Hikmah</h1>
+                        <p class="text-xs text-gray-600">Bersama Membangun Umat</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="#beranda" class="nav-link text-gray-700 hover:text-purple-600 transition">Beranda</a>
+                    <a href="#jadwal" class="nav-link text-gray-700 hover:text-purple-600 transition">Jadwal Sholat</a>
+                    <a href="#kegiatan" class="nav-link text-gray-700 hover:text-purple-600 transition">Kegiatan</a>
+                    <a href="#donasi" class="nav-link text-gray-700 hover:text-purple-600 transition">Donasi</a>
+                    <a href="#galeri" class="nav-link text-gray-700 hover:text-purple-600 transition">Galeri</a>
+                    <a href="#kontak" class="nav-link text-gray-700 hover:text-purple-600 transition">Kontak</a>
+                </div>
+                
+                <button id="mobileMenuBtn" class="md:hidden">
+                    <i class="fas fa-bars text-2xl text-gray-700"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pb-4">
+                <a href="#beranda" class="block py-2 text-gray-700 hover:text-purple-600">Beranda</a>
+                <a href="#jadwal" class="block py-2 text-gray-700 hover:text-purple-600">Jadwal Sholat</a>
+                <a href="#kegiatan" class="block py-2 text-gray-700 hover:text-purple-600">Kegiatan</a>
+                <a href="#donasi" class="block py-2 text-gray-700 hover:text-purple-600">Donasi</a>
+                <a href="#galeri" class="block py-2 text-gray-700 hover:text-purple-600">Galeri</a>
+                <a href="#kontak" class="block py-2 text-gray-700 hover:text-purple-600">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Selamat Datang di Masjid Al-Hikmah</h2>
+                    <p class="text-lg mb-6 opacity-90">Pusat kegiatan Islam yang menyediakan fasilitas ibadah, pendidikan, dan sosial untuk masyarakat.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="scrollToSection('jadwal')" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                            <i class="fas fa-clock mr-2"></i>Lihat Jadwal
+                        </button>
+                        <button onclick="scrollToSection('donasi')" class="bg-transparent border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition">
+                            <i class="fas fa-hand-holding-heart mr-2"></i>Donasi Sekarang
+                        </button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="float-animation">
+                        <i class="fas fa-mosque text-9xl opacity-80"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info Cards -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
+                    <i class="fas fa-users text-3xl text-purple-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">Jamaah</h3>
+                    <p class="text-2xl font-bold text-purple-600">1,500+</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
+                    <i class="fas fa-calendar-check text-3xl text-green-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">Kegiatan/Bulan</h3>
+                    <p class="text-2xl font-bold text-green-600">15+</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
+                    <i class="fas fa-graduation-cap text-3xl text-blue-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">Santri TPA</h3>
+                    <p class="text-2xl font-bold text-blue-600">200+</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
+                    <i class="fas fa-hand-holding-usd text-3xl text-orange-600 mb-3"></i>
+                    <h3 class="font-semibold text-gray-800">Donatur</h3>
+                    <p class="text-2xl font-bold text-orange-600">500+</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prayer Times Section -->
+    <section id="jadwal" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                <i class="fas fa-clock text-purple-600 mr-3"></i>Jadwal Sholat
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-r from-purple-600 to-purple-800 rounded-xl p-6 mb-6 text-white">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold">Hari Ini</h3>
+                        <span id="currentDate" class="text-lg"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-sm opacity-80">Waktu Sholat Selanjutnya</p>
+                        <p id="nextPrayer" class="text-3xl font-bold mt-2"></p>
+                        <p id="timeRemaining" class="text-xl mt-1"></p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <div class="prayer-time-card text-white p-4 rounded-lg text-center">
+                        <i class="fas fa-sun text-2xl mb-2"></i>
+                        <p class="font-semibold">Subuh</p>
+                        <p class="text-2xl font-bold">04:30</p>
+                    </div>
+                    <div class="prayer-time-card text-white p-4 rounded-lg text-center">
+                        <i class="fas fa-sun text-2xl mb-2"></i>
+                        <p class="font-semibold">Dzuhur</p>
+                        <p class="text-2xl font-bold">12:00</p>
+                    </div>
+                    <div class="prayer-time-card text-white p-4 rounded-lg text-center">
+                        <i class="fas fa-cloud-sun text-2xl mb-2"></i>
+                        <p class="font-semibold">Ashar</p>
+                        <p class="text-2xl font-bold">15:15</p>
+                    </div>
+                    <div class="prayer-time-card text-white p-4 rounded-lg text-center">
+                        <i class="fas fa-moon text-2xl mb-2"></i>
+                        <p class="font-semibold">Maghrib</p>
+                        <p class="text-2xl font-bold">18:00</p>
+                    </div>
+                    <div class="prayer-time-card text-white p-4 rounded-lg text-center">
+                        <i class="fas fa-star text-2xl mb-2"></i>
+                        <p class="font-semibold">Isya</p>
+                        <p class="text-2xl font-bold">19:15</p>
+                    </div>
+                </div>
+                
+                <!-- Qibla Direction -->
+                <div class="mt-8 bg-gray-50 rounded-xl p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-center">Arah Kiblat</h3>
+                    <div class="flex justify-center">
+                        <div class="relative w-48 h-48">
+                            <div class="absolute inset-0 border-4 border-purple-600 rounded-full"></div>
+                            <div class="absolute inset-4 border-2 border-purple-400 rounded-full"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i id="qiblaNeedle" class="fas fa-location-arrow text-4xl text-purple-600 qibla-needle"></i>
+                            </div>
+                            <div class="absolute top-2 left-1/2 transform -translate-x-1/2 text-sm font-semibold">N</div>
+                            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-sm font-semibold">S</div>
+                            <div class="absolute left-2 top-1/2 transform -translate-y-1/2 text-sm font-semibold">W</div>
+                            <div class="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm font-semibold">E</div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-4 text-gray-600">Arah Kiblat: 292° (Barat Laut)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="kegiatan" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                <i class="fas fa-calendar-alt text-purple-600 mr-3"></i>Kegiatan Rutin
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-r from-green-500 to-green-600 p-4 text-white">
+                        <i class="fas fa-book text-3xl mb-2"></i>
+                        <h3 class="text-xl font-semibold">TPA/TPQ</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Pendidikan Al-Qur'an untuk anak-anak usia 6-12 tahun</p>
+                        <div class="space-y-2 text-sm">
+                            <p><i class="fas fa-clock text-purple-600 mr-2"></i>Sabtu & Ahad: 08:00 - 10:00</p>
+                            <p><i class="fas fa-user text-purple-600 mr-2"></i>Ustadz Ahmad, S.Pd.I</p>
+                        </div>
+                        <button class="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">
+                            Daftar Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-4 text-white">
+                        <i class="fas fa-microphone text-3xl mb-2"></i>
+                        <h3 class="text-xl font-semibold">Kajian Islam</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Kajian rutin setiap pekan dengan tema yang bervariasi</p>
+                        <div class="space-y-2 text-sm">
+                            <p><i class="fas fa-clock text-purple-600 mr-2"></i>Jum'at: Ba'da Isya</p>
+                            <p><i class="fas fa-user text-purple-600 mr-2"></i>Ustadz Dr. Rahman, M.A.</p>
+                        </div>
+                        <button class="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">
+                            Lihat Jadwal
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
+                    <div class="bg-gradient-to-r from-orange-500 to-orange-600 p-4 text-white">
+                        <i class="fas fa-hands-helping text-3xl mb-2"></i>
+                        <h3 class="text-xl font-semibold">Sosial</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Program sosial untuk membantu masyarakat yang membutuhkan</p>
+                        <div class="space-y-2 text-sm">
+                            <p><i class="fas fa-clock text-purple-600 mr-2"></i>25 setiap bulan</p>
+                            <p><i class="fas fa-user text-purple-600 mr-2"></i>Panitia Sosial</p>
+                        </div>
+                        <button class="mt-4 w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">
+                            Ikut Berpartisipasi
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Upcoming Events -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold mb-6 text-center">Acara Mendatang</h3>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-calendar text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Tabligh Akbar</h4>
+                                <p class="text-sm text-gray-600">Bersama Ustadz Abdul Somad, Lc., MA</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-semibold text-purple-600">15 Des 2024</p>
+                            <p class="text-sm text-gray-600">08:00 WIB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-child text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Peringatan Maulid Nabi</h4>
+                                <p class="text-sm text-gray-600">Acara untuk seluruh jamaah</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-semibold text-green-600">20 Des 2024</p>
+                            <p class="text-sm text-gray-600">19:00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donasi" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                <i class="fas fa-hand-holding-heart text-purple-600 mr-3"></i>Donasi & Infaq
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Program Donasi</h3>
+                    <div class="space-y-4">
+                        <div class="border rounded-lg p-4 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-semibold">Pembangunan Gedung TPA</h4>
+                                <span class="text-sm text-purple-600 font-semibold">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-600 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Terkumpul: Rp 750.000.000 dari Rp 1.000.000.000</p>
+                        </div>
+                        
+                        <div class="border rounded-lg p-4 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-semibold">Santunan Anak Yatim</h4>
+                                <span class="text-sm text-green-600 font-semibold">60%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Terkumpul: Rp 30.000.000 dari Rp 50.000.000</p>
+                        </div>
+                        
+                        <div class="border rounded-lg p-4 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-semibold">Operasional Masjid</h4>
+                                <span class="text-sm text-blue-600 font-semibold">40%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: 40%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Terkumpul: Rp 8.000.000 dari Rp 20.000.000</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-gradient-to-r from-purple-600 to-purple-800 rounded-lg p-6 text-white">
+                        <h3 class="text-xl font-semibold mb-4">Cara Donasi</h3>
+                        <div class="space-y-3">
+                            <div class="bg-white/10 rounded-lg p-3">
+                                <p class="font-semibold mb-1">Transfer Bank</p>
+                                <p class="text-sm opacity-90">BCA: 1234567890 a.n. Masjid Al-Hikmah</p>
+                                <p class="text-sm opacity-90">Mandiri: 0987654321 a.n. Masjid Al-Hikmah</p>
+                            </div>
+                            <div class="bg-white/10 rounded-lg p-3">
+                                <p class="font-semibold mb-1">E-Wallet</p>
+                                <p class="text-sm opacity-90">GoPay: 0812-3456-7890</p>
+                                <p class="text-sm opacity-90">OVO: 0812-3456-7890</p>
+                            </div>
+                            <div class="bg-white/10 rounded-lg p-3">
+                                <p class="font-semibold mb-1">QRIS</p>
+                                <p class="text-sm opacity-90">Scan QR Code di masjid</p>
+                            </div>
+                        </div>
+                        <button onclick="showDonationForm()" class="w-full mt-4 bg-white text-purple-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                            <i class="fas fa-donate mr-2"></i>Donasi Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeri" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                <i class="fas fa-images text-purple-600 mr-3"></i>Galeri Kegiatan
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openImageModal('https://picsum.photos/seed/masjid1/400/300')">
+                    <img src="https://picsum.photos/seed/masjid1/400/300" alt="Masjid" class="w-full h-48 object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openImageModal('https://picsum.photos/seed/masjid2/400/300')">
+                    <img src="https://picsum.photos/seed/masjid2/400/300" alt="Sholat Berjamaah" class="w-full h-48 object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openImageModal('https://picsum.photos/seed/masjid3/400/300')">
+                    <img src="https://picsum.photos/seed/masjid3/400/300" alt="TPA" class="w-full h-48 object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openImageModal('https://picsum.photos/seed/masjid4/400/300')">
+                    <img src="https://picsum.photos/seed/masjid4/400/300" alt="Kajian" class="w-full h-48 object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openImageModal('https://picsum.photos/seed/masjid5/400/300')">
+                    <img src="https://picsum.photos/seed/masjid5/400/300" alt="Santunan" class="w-full h-48 object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openImageModal('https://picsum.photos/seed/masjid6/400/300')">
+                    <img src="https://picsum.photos/seed/masjid6/400/300" alt="Ramadhan" class="w-full h-48 object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openImageModal('https://picsum.photos/seed/masjid7/400/300')">
+                    <img src="https://picsum.photos/seed/masjid7/400/300" alt="Idul Fitri" class="w-full h-48 object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer" onclick="openImageModal('https://picsum.photos/seed/masjid8/400/300')">
+                    <img src="https://picsum.photos/seed/masjid8/400/300" alt="Pembangunan" class="w-full h-48 object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                <i class="fas fa-map-marker-alt text-purple-600 mr-3"></i>Kontak Kami
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-xl font-semibold mb-4">Informasi Kontak</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-purple-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-semibold">Alamat</p>
+                                    <p class="text-gray-600">Jl. Masjid Al-Hikmah No. 123, Kelurahan Sukamaju, Kecamatan Makmur, Kota Jakarta</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone text-purple-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-semibold">Telepon</p>
+                                    <p class="text-gray-600">(021) 1234-5678</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-purple-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-semibold">Email</p>
+                                    <p class="text-gray-600">info@masjidalhikmah.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-purple-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-semibold">Jam Operasional</p>
+                                    <p class="text-gray-600">Setiap hari: 04:00 - 22:00 WIB</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h4 class="font-semibold mb-3">Ikuti Kami</h4>
+                            <div class="flex space-x-3">
+                                <a href="#" class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-700 transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-700 transition">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="#" class="bg-red-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-700 transition">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-xl font-semibold mb-4">Kirim Pesan</h3>
+                        <form onsubmit="handleContactForm(event)">
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-semibold mb-2">Nama Lengkap</label>
+                                <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-600" placeholder="Masukkan nama Anda">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
+                                <input type="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-600" placeholder="email@example.com">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-semibold mb-2">Subjek</label>
+                                <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-600" placeholder="Subjek pesan">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-semibold mb-2">Pesan</label>
+                                <textarea required rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-600" placeholder="Tulis pesan Anda..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+                                <i class="fas fa-paper-plane mr-2"></i>Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map -->
+            <div class="mt-12">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Lokasi Masjid</h3>
+                    <div class="bg-gray-300 rounded-lg h-64 flex items-center justify-center">
+                        <p class="text-gray-600">
+                            <i class="fas fa-map-marked-alt text-4xl mb-2"></i><br>
+                            Peta Lokasi Masjid Al-Hikmah
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-mosque text-2xl mr-2"></i>
+                        <h3 class="text-xl font-semibold">Masjid Al-Hikmah</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Bersama membangun umat yang sejahtera dan berakhlak mulia.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Link Cepat</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#beranda" class="hover:text-white transition">Beranda</a></li>
+                        <li><a href="#jadwal" class="hover:text-white transition">Jadwal Sholat</a></li>
+                        <li><a href="#kegiatan" class="hover:text-white transition">Kegiatan</a></li>
+                        <li><a href="#donasi" class="hover:text-white transition">Donasi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Layanan</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">TPA/TPQ</a></li>
+                        <li><a href="#" class="hover:text-white transition">Kajian Islam</a></li>
+                        <li><a href="#" class="hover:text-white transition">Santunan</a></li>
+                        <li><a href="#" class="hover:text-white transition">Fasilitas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Newsletter</h4>
+                    <p class="text-gray-400 text-sm mb-3">Dapatkan update kegiatan terbaru</p>
+                    <form onsubmit="handleNewsletter(event)" class="flex">
+                        <input type="email" required placeholder="Email Anda" class="px-3 py-2 bg-gray-700 text-white rounded-l-lg flex-1 focus:outline-none">
+                        <button type="submit" class="bg-purple-600 px-4 py-2 rounded-r-lg hover:bg-purple-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
+                <p>&copy; 2024 Masjid Al-Hikmah. All rights reserved. | Developed with <i class="fas fa-heart text-red-500"></i> for the ummah</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4">
+        <button onclick="closeImageModal()" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300">
+            <i class="fas fa-times"></i>
+        </button>
+        <img id="modalImage" src="" alt="Gallery Image" class="max-w-full max-h-full rounded-lg">
+    </div>
+
+    <!-- Donation Modal -->
+    <div id="donationModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-md w-full p-6">
+            <h3 class="text-xl font-semibold mb-4">Form Donasi</h3>
+            <form onsubmit="handleDonation(event)">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Nama</label>
+                    <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-600">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Nominal (Rp)</label>
+                    <input type="number" required min="10000" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-600" placeholder="10000">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Program</label>
+                    <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-600">
+                        <option>Pembangunan Gedung TPA</option>
+                        <option>Santunan Anak Yatim</option>
+                        <option>Operasional Masjid</option>
+                        <option>Infaq Umum</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Metode Pembayaran</label>
+                    <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-600">
+                        <option>Transfer Bank BCA</option>
+                        <option>Transfer Bank Mandiri</option>
+                        <option>GoPay</option>
+                        <option>OVO</option>
+                    </select>
+                </div>
+                <div class="flex gap-3">
+                    <button type="submit" class="flex-1 bg-purple-600 text-white py-2 rounded-lg font-semibold hover:bg-purple-700 transition">
+                        Lanjutkan
+                    </button>
+                    <button type="button" onclick="closeDonationModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg font-semibold hover:bg-gray-400 transition">
+                        Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div id="notification" class="fixed top-20 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span id="notificationText">Success!</span>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scroll
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Navigation Active State
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-purple-600', 'font-semibold');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('text-purple-600', 'font-semibold');
+                }
+            });
+        });
+
+        // Update Current Date
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('id-ID', options);
+        }
+        updateDate();
+
+        // Prayer Times Countdown
+        const prayerTimes = {
+            'Subuh': '04:30',
+            'Dzuhur': '12:00',
+            'Ashar': '15:15',
+            'Maghrib': '18:00',
+            'Isya': '19:15'
+        };
+
+        function updatePrayerCountdown() {
+            const now = new Date();
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+            
+            let nextPrayer = null;
+            let minDiff = Infinity;
+            
+            for (const [prayer, time] of Object.entries(prayerTimes)) {
+                const [hours, minutes] = time.split(':').map(Number);
+                const prayerMinutes = hours * 60 + minutes;
+                let diff = prayerMinutes - currentTime;
+                
+                if (diff < 0) diff += 24 * 60; // Next day
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    nextPrayer = prayer;
+                }
+            }
+            
+            if (nextPrayer) {
+                document.getElementById('nextPrayer').textContent = nextPrayer;
+                const hours = Math.floor(minDiff / 60);
+                const minutes = minDiff % 60;
+                document.getElementById('timeRemaining').textContent = `${hours} jam ${minutes} menit lagi`;
+            }
+        }
+        
+        updatePrayerCountdown();
+        setInterval(updatePrayerCountdown, 60000); // Update every minute
+
+        // Qibla Direction Animation
+        function animateQibla() {
+            const needle = document.getElementById('qiblaNeedle');
+            needle.style.transform = 'rotate(292deg)';
+        }
+        animateQibla();
+
+        // Image Modal
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            modal.classList.remove('hidden');
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+        }
+
+        // Donation Modal
+        function showDonationForm() {
+            document.getElementById('donationModal').classList.remove('hidden');
+        }
+
+        function closeDonationModal() {
+            document.getElementById('donationModal').classList.add('hidden');
+        }
+
+        // Form Handlers
+        function handleContactForm(event) {
+            event.preventDefault();
+            showNotification('Pesan Anda telah terkirim! Kami akan segera menghubungi Anda.');
+            event.target.reset();
+        }
+
+        function handleNewsletter(event) {
+            event.preventDefault();
+            showNotification('Terima kasih telah berlangganan newsletter kami!');
+            event.target.reset();
+        }
+
+        function handleDonation(event) {
+            event.preventDefault();
+            showNotification('Terima kasih atas donasi Anda! Semoga Allah membalas kebaikan Anda.');
+            closeDonationModal();
+            event.target.reset();
+        }
+
+        // Notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            notificationText.textContent = message;
+            notification.classList.remove('translate-x-full');
+            
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+            }, 3000);
+        }
+
+        // Close modals on outside click
+        window.addEventListener('click', (e) => {
+            if (e.target.id === 'imageModal') {
+                closeImageModal();
+            }
+            if (e.target.id === 'donationModal') {
+                closeDonationModal();
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
